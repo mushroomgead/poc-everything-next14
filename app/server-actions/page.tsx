@@ -24,12 +24,20 @@ export default function Page() {
   };
 
   return (
-    <form action={handleSubmit}>
-      <input type="text" name="username" />
-      <p aria-live="polite" className="sr-only">
-        {state?.message}
-      </p>
-      <SubmitButton />
-    </form>
+    <div className="bg-rose-300">
+      <p>Submit form</p>
+      <form action={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          className="bg-yellow-200"
+          placeholder="placeholder"
+        />
+        <p aria-live="polite" className="sr-only">
+          {state?.message}
+        </p>
+        <SubmitButton />
+      </form>
+    </div>
   );
 }
