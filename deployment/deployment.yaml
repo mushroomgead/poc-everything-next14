@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-playground
+spec:
+  selector:
+    matchLabels:
+      app: next-playground
+  template:
+    metadata:
+      labels:
+        app: next-playground
+    spec:
+      containers:
+      - name: next-playground
+        image: mushroomgead/next-playground:v1.0.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "600m"
+          requests:
+            memory: "128Mi"
+            cpu: "600m"
+        ports:
+        - containerPort: 3000

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: next-playground
+  labels:
+    name: next-playground
+spec:
+  rules:
+  - host: mushroom-next-playground-fe.local
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: next-playground-service
+            port: 
+              number: 3000
