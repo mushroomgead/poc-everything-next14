@@ -25,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "gade-kube" {
   dns_prefix          = "gadekube"
 
   default_node_pool {
-    name       = "default"
+    name       = "default2"
     node_count = 1
     vm_size    = "standard_b2s"
   }
