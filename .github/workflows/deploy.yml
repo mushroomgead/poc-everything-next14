@@ -58,7 +58,7 @@ jobs:
                         -o ProxyCommand="cloudflared access ssh --hostname ssh.catterydoubleg.com" \
                         -p 2222 \
                         ${{ secrets.SERVER_USER }}@ssh.catterydoubleg.com \
-                        "cd /home/next14 && docker compose pull && docker compose up -d"
+                        "cd /home/gead/home/next14 && docker compose pull && docker compose up -d"
 
                             
 
