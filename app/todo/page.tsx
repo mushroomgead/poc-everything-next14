@@ -79,9 +79,12 @@ export default function TodoPage() {
 
   const getPriorityColor = (title: string) => {
     const lower = title.toLowerCase();
-    if (lower.includes("urgent") || lower.includes("important")) return "from-red-500 to-orange-500";
-    if (lower.includes("todo") || lower.includes("task")) return "from-blue-500 to-cyan-500";
-    if (lower.includes("meeting") || lower.includes("call")) return "from-purple-500 to-pink-500";
+    if (lower.includes("urgent") || lower.includes("important"))
+      return "from-red-500 to-orange-500";
+    if (lower.includes("todo") || lower.includes("task"))
+      return "from-blue-500 to-cyan-500";
+    if (lower.includes("meeting") || lower.includes("call"))
+      return "from-purple-500 to-pink-500";
     return "from-green-500 to-emerald-500";
   };
 
@@ -96,7 +99,7 @@ export default function TodoPage() {
             </div>
           </div>
           <h1 className="text-5xl font-black text-white mb-2 tracking-tight drop-shadow-lg">
-            My Tasks
+            My TODOS
           </h1>
           <p className="text-xl text-purple-200 font-medium">
             Stay organized, get things done
@@ -136,8 +139,8 @@ export default function TodoPage() {
             {progress === 100
               ? "🎉 All tasks completed! Great job!"
               : progress === 0
-              ? "🚀 Ready to get started?"
-              : "Keep going, you're making progress!"}
+                ? "🚀 Ready to get started?"
+                : "Keep going, you're making progress!"}
           </p>
         </div>
 
@@ -255,7 +258,7 @@ export default function TodoPage() {
                             todo.completed
                               ? "bg-gray-200 text-gray-500"
                               : `bg-gradient-to-r ${getPriorityColor(
-                                  todo.title
+                                  todo.title,
                                 )} text-white shadow-md`
                           }`}
                         >
@@ -324,9 +327,7 @@ export default function TodoPage() {
             style={{ animation: "fadeIn 0.8s ease-out" }}
           >
             <div className="text-8xl mb-4 animate-bounce">🌱</div>
-            <h3 className="text-2xl font-bold text-white mb-2">
-              No tasks yet
-            </h3>
+            <h3 className="text-2xl font-bold text-white mb-2">No tasks yet</h3>
             <p className="text-purple-200 text-lg">
               Add your first task to get started!
             </p>
@@ -337,8 +338,8 @@ export default function TodoPage() {
         <div className="mt-12 text-center">
           <div className="inline-block bg-white/10 backdrop-blur-lg rounded-2xl px-8 py-4 shadow-xl border border-white/20">
             <p className="text-purple-200 text-sm font-medium">
-              {activeTodos.length} task{activeTodos.length !== 1 ? "s" : ""} pending
-              • {completedCount} completed
+              {activeTodos.length} task{activeTodos.length !== 1 ? "s" : ""}{" "}
+              pending • {completedCount} completed
             </p>
           </div>
         </div>
