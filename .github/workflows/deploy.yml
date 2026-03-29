@@ -41,12 +41,20 @@ jobs:
                     push: true
                     tags: ghcr.io/${{ github.repository_owner }}/poc-everything-next14:latest
             
+            -   name: Install cloudflared
+                run: |
+                    curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+                    chmod +x cloudflared
+                    sudo mv cloudflared /usr/local/bin/
+
             -   name: Deploy to server via SSH
                 uses: appleboy/ssh-action@v1
                 with:
                     host: ${{ secrets.SERVER_HOST }}
                     username: ${{ secrets.SERVER_USER }}
                     key: ${{ secrets.SERVER_KEY }}
+                    proxy_command: cloudflared access ssh --hostname ${{ secrets.SERVER_HOST }}
+                    port: 2222
                     script: |
                         docker compose -f /home/next14/docker-compose.yml pull
                         docker compose -f /home/next14/docker-compose.yml up -d
