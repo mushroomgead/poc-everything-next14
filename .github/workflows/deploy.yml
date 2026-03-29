@@ -48,18 +48,19 @@ jobs:
                     sudo mv cloudflared /usr/local/bin/
 
             -   name: Deploy to server via SSH
-                uses: appleboy/ssh-action@v1
-                with:
-                    host: ${{ secrets.SERVER_HOST }}
-                    username: ${{ secrets.SERVER_USER }}
-                    key: ${{ secrets.SERVER_KEY }}
-                    proxy_command: cloudflared access ssh --hostname ssh.catterydoubleg.com
-                    port: 2222
-                    script: |
-                        docker compose -f /home/next14/docker-compose.yml pull
-                        docker compose -f /home/next14/docker-compose.yml up -d
+                env:
+                    SSH_KEY: ${{ secrets.SERVER_KEY }}
+                run: |
+                    mkdir -p ~/.ssh
+                    echo "$SSH_KEY" > ~/.ssh/id_rsa
+                    chmod 600 ~/.ssh/id_rsa
+                    ssh -o StrictHostKeyChecking=no \
+                        -o ProxyCommand="cloudflared access ssh --hostname ssh.catterydoubleg.com" \
+                        -p 2222 \
+                        ${{ secrets.SERVER_USER }}@ssh.catterydoubleg.com \
+                        "cd /home/next14 && docker compose pull && docker compose up -d"
 
-            
+                            
 
 
             
