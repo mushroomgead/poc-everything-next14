@@ -24,6 +24,6 @@ describe("Page Component", () => {
 
     const link = screen.getByRole("link", { name: /About/i });
 
-    expect(link).toHaveAttribute("href", "/aboutx");
+    expect(link).toHaveAttribute("href", "/about");
   });
 });
