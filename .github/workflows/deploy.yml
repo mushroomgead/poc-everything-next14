@@ -39,7 +39,7 @@ jobs:
                 with:
                     context: .
                     push: true
-                    tag: ghcr.io/${{ github.repository_owner }}/poc-everything-next14:latest
+                    tags: ghcr.io/${{ github.repository_owner }}/poc-everything-next14:latest
             
             -   name: Deploy to server via SSH
                 uses: appleboy/ssh-action@v1
