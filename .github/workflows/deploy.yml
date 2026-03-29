@@ -42,7 +42,7 @@ jobs:
                     tag: ghcr.io/${{ github.repository_owner }}/poc-everything-next14:latest
             
             -   name: Deploy to server via SSH
-                uses: applyboy/ssh-action@v1
+                uses: appleboy/ssh-action@v1
                 with:
                     host: ${{ secrets.SERVER_HOST }}
                     username: ${{ secrets.SERVER_USER }}
