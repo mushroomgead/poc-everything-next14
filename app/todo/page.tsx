@@ -99,7 +99,7 @@ export default function TodoPage() {
             </div>
           </div>
           <h1 className="text-5xl font-black text-white mb-2 tracking-tight drop-shadow-lg">
-            My TODOS!!
+            My TODOS
           </h1>
           <p className="text-xl text-purple-200 font-medium">
             Stay organized, get things done
